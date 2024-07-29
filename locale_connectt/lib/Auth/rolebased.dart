@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:locale_connectt/pages/cushome.dart';
 import 'package:locale_connectt/pages/home.dart';
 import 'package:locale_connectt/pages/loginorreg.dart';
+import 'package:locale_connectt/utils/bottom.dart';
 
 class Rolebased extends StatelessWidget {
   const Rolebased({super.key});
@@ -24,7 +25,7 @@ class Rolebased extends StatelessWidget {
             if (role == 'vendor') {
               return Home();
             } else if (role == 'user') {
-              return Cushome();
+              return Bottom();
             }else{
               return Loginorreg();
             }

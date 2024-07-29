@@ -13,8 +13,8 @@ class Home extends StatelessWidget {
 
  final  TextEditingController iname = TextEditingController();
   final  TextEditingController iprice = TextEditingController();
-  late String lat;
-  late String long;
+  late String lat = '';
+  late String long = '';
 
   void livelocation(){
     LocationSettings locationSettings = const LocationSettings(
@@ -111,6 +111,16 @@ class Home extends StatelessWidget {
                   print('???????????$lat');
                   print('?????????????$long');
                   livelocation();
+                  if(lat.isEmpty || long.isEmpty){
+                     ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('please insert a location or wait for a minute..'))
+                  );
+                  }
+                  else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('location successfully uploaded..'))
+                  );
+                  }
                }, child: Text('add location')),
                ElevatedButton(onPressed: (){
                 if(imageurl.isEmpty){

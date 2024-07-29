@@ -62,21 +62,22 @@ class _RegisterPageState extends State<RegisterPage> {
 
       Future<void> storeuser(UserCredential? user)async{
     if(user!=null && user.user!=null){
+                 await FirebaseFirestore.instance.collection('users').doc(user.user!.email).set({
+      'username': userr.text,
+      'email': user.user!.email,
+      'role': role,
+      'password': password.text,
+    });
+
       if(role=='vendor'){
     await FirebaseFirestore.instance.collection('vendors').doc(user.user!.email).set({
       'username': userr.text,
       'email': user.user!.email,
       'role': role,
       'password': password.text,
-      'products': [{}]
+      'products': []
     });
       }
-           await FirebaseFirestore.instance.collection('users').doc(user.user!.email).set({
-      'username': userr.text,
-      'email': user.user!.email,
-      'role': role,
-      'password': password.text,
-    });
 
       }
    }
