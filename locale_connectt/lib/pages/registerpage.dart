@@ -67,6 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'email': user.user!.email,
       'role': role,
       'password': password.text,
+      'ordered': []
     });
 
       if(role=='vendor'){
@@ -75,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
       'email': user.user!.email,
       'role': role,
       'password': password.text,
-      'products': []
+      'products': [],
     });
       }
 
@@ -142,7 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amberAccent,
+                        backgroundColor: Colors.blue,
                         minimumSize: Size(double.infinity,40), 
                       ),
                       onPressed: (){

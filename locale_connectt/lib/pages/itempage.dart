@@ -69,7 +69,7 @@ class _ItemPageState extends State<ItemPage> {
    String? pname;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Item'),
+        title: Text('Item',style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold,fontSize: 30),),
         centerTitle: true,
       ),
       body: StreamBuilder(
@@ -139,41 +139,59 @@ class _ItemPageState extends State<ItemPage> {
                 haversineDistance(referenceLocation, a['location']).compareTo(haversineDistance(referenceLocation, b['location'])));
           }
 
-          return ListView.builder(
-            itemCount: locations.length,
-            itemBuilder: (context, index) {
-              var locationData = locations[index];
-              String price = locationData['price'];
-              Location location = locationData['location'];
-              String imageUrl = locationData['image'];
-              String email = locationData['email'] ?? 'No email available';
-              return GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_)=>Cartitem(
-                     pimage: imageUrl,
-                     pname: locationData['iname'],
-                     price: price,
-                     email: email,
-                     lat: location.latitude,
-                     long: location.longitude,
-                     product: products,
-                  ))
-                ),
-                // onTap: () => openMap(location.latitude, location.longitude),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ) ,
-                    tileColor: Color.fromARGB(255, 237, 229, 238),
-                    leading: imageUrl != null ? Image.network(imageUrl,height: 100,width: 100,fit: BoxFit.cover,) : null,
-                    title: Text('${location.latitude}, ${location.longitude}'),
-                    subtitle: Text(email),
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView.builder(
+              itemCount: locations.length,
+              itemBuilder: (context, index) {
+                var locationData = locations[index];
+                String price = locationData['price'];
+                Location location = locationData['location'];
+                String imageUrl = locationData['image'];
+                String email = locationData['email'] ?? 'No email available';
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_)=>Cartitem(
+                       pimage: imageUrl,
+                       pname: locationData['iname'],
+                       price: price,
+                       email: email,
+                       lat: location.latitude,
+                       long: location.longitude,
+                       product: products,
+                    ))
                   ),
-                ),
-              );
-            },
+                  // onTap: () => openMap(location.latitude, location.longitude),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                                
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white70,
+                                border: Border.all(color: Color.fromARGB(255, 232, 244, 249)),
+                                boxShadow: [
+                                  new BoxShadow(
+                                    color: const Color.fromARGB(255, 210, 207, 207),
+                                    spreadRadius: 1,
+                                    blurRadius: 5
+                                  )
+                                ]
+                              ),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ) ,
+                        tileColor: Color.fromARGB(255, 237, 229, 238),
+                        leading: imageUrl != null ? Image.network(imageUrl,height: 100,width: 100,fit: BoxFit.fill,) : null,
+                        title: Text('${location.latitude}, ${location.longitude}'),
+                        subtitle: Text(email),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),

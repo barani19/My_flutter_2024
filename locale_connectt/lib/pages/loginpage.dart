@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.shopping_cart,size: 50,),
+                  Icon(Icons.shopping_cart,size: 100,),
                   SizedBox(height: 20,),
                   Text('L O C A L E - C O N E C T',style: TextStyle(fontSize: 20),),
                   SizedBox(height: 20,),
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amberAccent,
+                        backgroundColor: Colors.blue,
                         minimumSize: Size(double.infinity,40), 
                       ),
                       onPressed: (){

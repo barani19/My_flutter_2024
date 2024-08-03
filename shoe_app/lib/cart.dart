@@ -13,7 +13,7 @@ class cart extends StatelessWidget {
         title: Text('Cart',style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold
-        ),),
+        ),), 
       ),
       body: ListView.builder(
         itemCount: mycart.length,
